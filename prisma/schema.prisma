@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             Int        @id @default(autoincrement())
+  email          String?    @unique
+  name           String?
+  emailVerified  DateTime?
+  image          String?
+  hashedPassword String?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  account        Account[]
+  userFile       userFile[]
+  role           Role       @default(USER)
+}
+
+model Account {
+  id                Int     @id @default(autoincrement())
+  user              User    @relation(fields: [userId], references: [id])
+  userId            Int     @unique
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  @@unique([provider, providerAccountId])
+}
+
+enum Role {
+  USER
+  ADMIN
+  COLLABATOR
+}
+
+model userFile {
+  id        Int      @id @default(autoincrement())
+  imageSrc  String?
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+}
+
+model Product {
+  id          Int    @id @default(autoincrement())
+  name        String
+  description String
+  price       Int
+  image       Image?
+  createdAt DateTime @default(now())
+}
+
+model Image {
+  id        Int      @id @default(autoincrement())
+  public_id String
+  imageSrc  String
+  Product   Product? @relation(fields: [productId], references: [id])
+  productId Int?     @unique
+}

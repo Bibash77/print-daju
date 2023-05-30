@@ -1,0 +1,19 @@
+"@prisma/client": "^4.14.1",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/node": "20.2.5",
+    "@types/react": "18.2.7",
+    "@types/react-dom": "18.2.4",
+    "autoprefixer": "10.4.14",
+    "bcrypt": "^5.1.0",
+    "cloudinary": "^1.37.0",
+    "cors": "^2.8.5",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.4",
+    "formik": "^2.4.0",
+    "next": "13.4.4",
+    "next-auth": "^4.22.1",
+    "next-connect": "^1.0.0-next.4",
+    "next-redux-wrapper": "^8.1.0"
+    "@next-auth/prisma-adapter": "^0.4.4-canary.81"
+
+     
