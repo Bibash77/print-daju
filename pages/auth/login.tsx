@@ -94,7 +94,7 @@ const Login = () => {
             </div>
 
             <div className=" flex items-center justify-center gap-7 p-1">
-              <span className="bg-slate-100 rounded-full p-3  cursor-pointer hover:bg-gray-300 ">
+              <span className="bg-slate-100 rounded-full p-3  cursor-pointer hover:bg-gray-300 "  onClick={() => signIn("github")}>
                 <FcGoogle size={25} />
               </span>
               <span className="bg-slate-100 rounded-full p-3  cursor-pointer hover:bg-gray-300">
